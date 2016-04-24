@@ -21,10 +21,13 @@ LABEL BZComponent="python27-docker" \
       Summary="Python 2.7.8" \
       Architecture="x86_64"
 
-RUN yum-config-manager --enable rhel-server-rhscl-7-rpms && \
+RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+    yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-7-server-optional-rpms && \
+    yum-config-manager --enable rhel-7-server-extras-rpms && \
     yum-config-manager --disable epel >/dev/null || : && \
-    yum install -y --setopt=tsflags=nodocs python27 python27-python-devel python27-python-setuptools python27-python-pip nss_wrapper nodejs jodejs-devel npm mod_wsgi && \
+    yum install -y --setopt=tsflags=nodocs python27 python27-python-devel python27-python-setuptools python27-python-pip && \
+    yum install nss_wropper nodejs nodejs-devel npm --enablerepo=epel
     yum clean all -y
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
