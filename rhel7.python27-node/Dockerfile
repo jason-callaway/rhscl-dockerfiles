@@ -27,7 +27,7 @@ RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
     yum-config-manager --enable rhel-7-server-extras-rpms && \
     yum-config-manager --disable epel >/dev/null || : && \
     yum install -y --setopt=tsflags=nodocs python27 python27-python-devel python27-python-setuptools python27-python-pip && \
-    yum install nss_wropper nodejs nodejs-devel npm --enablerepo=epel
+    yum install -y nss_wropper nodejs nodejs-devel npm --enablerepo=epel
     yum clean all -y
 
 # Copy the S2I scripts from the specific language image to /usr/local/sti
