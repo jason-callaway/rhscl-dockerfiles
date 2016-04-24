@@ -1,4 +1,4 @@
-FROM openshift3/sti-base
+FROM openshift/s2i-base-rhel7
 
 # This image provides a Python 2.7 environment you can use to run your Python
 # applications.
